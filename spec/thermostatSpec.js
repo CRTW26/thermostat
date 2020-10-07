@@ -29,7 +29,6 @@ describe('Thermostat', function() {
   it('cannot go above maximum with powersave on ', function() {
     expect(thermostat.up(20)).toEqual(25)
   });
-  // added this test to test that with powersave off I could go above limit of 25 
   it('cannot go above max with powersave off', function(){
     thermostat.switchOff();
     thermostat.up(10);
@@ -42,12 +41,27 @@ describe('Thermostat', function() {
     thermostat.switchOff()
     expect(thermostat.isOn()).toBe(false)
   });
-
-
   it("can increase temperature up to 32 when powersave is off", function(){
     thermostat.switchOff();
     thermostat.up(12); 
     expect(thermostat.showTemp()).toEqual(32)
   });
-
+  it("can reset set the temp to 20", function() {
+    thermostat.up(5);
+    thermostat.reset()
+    expect(thermostat.showTemp()).toEqual(20)
+  });
+  it("if temp < 18 energy usage is low", function(){
+    thermostat.down(3);
+    expect(thermostat.energyUsage()).toEqual("green")
+  });
+  it("if temp <= 25 energy usage is medium", function () {
+    thermostat.up(3);
+    expect(thermostat.energyUsage()).toEqual("black");
+  });
+  it("if temp > 25 energy usage is high", function () {
+    thermostat.switchOff();
+    thermostat.up(10);
+    expect(thermostat.energyUsage()).toEqual("red");
+  });
 });
