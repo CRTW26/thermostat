@@ -53,15 +53,15 @@ describe('Thermostat', function() {
   });
   it("if temp < 18 energy usage is low", function(){
     thermostat.down(3);
-    expect(thermostat.energyUsage()).toEqual("green")
+    expect(thermostat.usage).toEqual("green")
   });
   it("if temp <= 25 energy usage is medium", function () {
     thermostat.up(3);
-    expect(thermostat.energyUsage()).toEqual("black");
+    expect(thermostat.usage).toEqual("black");
   });
   it("if temp > 25 energy usage is high", function () {
     thermostat.switchOff();
     thermostat.up(10);
-    expect(thermostat.energyUsage()).toEqual("red");
+    expect(thermostat.usage).toEqual("red");
   });
 });
