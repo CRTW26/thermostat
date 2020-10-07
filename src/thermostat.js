@@ -13,7 +13,7 @@ class Thermostat {
     return this.temp;
   }
   
-  up(num) {
+  up(num = 1) {
     if (this.powerSave) {
       if ((this.temp + num) > this.maxTemp_ps_On) {
         return this.temp = this.maxTemp_ps_On
@@ -29,7 +29,7 @@ class Thermostat {
     }
   }
   
-  down(num) {
+  down(num = 1) {
     if ((this.temp - num) < this.minTemp) {
       return this.temp = this.minTemp
     } 
