@@ -39,3 +39,6 @@ $(document).ready(function(){
 
 });
 
+$.get('http://api.openweathermap.org/data/2.5/weather?q=London&appid=90c00a335031eec9c510112b569dfd57&units=metric', function(data){
+  $('#current_temperature').text(data.main.temp);
+})
