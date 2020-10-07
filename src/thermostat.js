@@ -7,7 +7,6 @@ class Thermostat {
    this.maxTemp_ps_On = 25;
    this.maxTemp_ps_Off = 32;
    this.powerSave = true;
-   this.usage = "black";
   }
 
   showTemp() {
@@ -58,11 +57,11 @@ class Thermostat {
 
   energyUsage() {
     if (this.temp < 18) {
-      this.usage = "green";
+      return "green";
     } else if (this.temp <= 25) {
-      this.usage = 'black';
+      return 'black';
     } else {
-      this.usage = 'red';
+      return 'red';
     }
   }
 

@@ -34,7 +34,7 @@ $(document).ready(function(){
     $('#usage').text(thermostat.usage);
   })
   $('#eusage').on('click', function(){
-    $('#usage').text(thermostat.usage);
+    $('#usage').text(thermostat.energyUsage());
   });
 
 });

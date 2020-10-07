@@ -34,12 +34,12 @@ describe('Thermostat', function() {
     thermostat.up(10);
     expect(thermostat.showTemp()).toEqual(30)
   });
-  it('powersave = false', function() {
-    expect(thermostat.isOn()).toBe(true)
+  it('powersave is on by default', function() {
+    expect(thermostat.powerSave).toBe(true)
   });
-  it('can turn on powersave', function() {
+  it('can turn off powersave', function() {
     thermostat.switchOff()
-    expect(thermostat.isOn()).toBe(false)
+    expect(thermostat.powerSave).toBe(false)
   });
   it("can increase temperature up to 32 when powersave is off", function(){
     thermostat.switchOff();
@@ -53,15 +53,15 @@ describe('Thermostat', function() {
   });
   it("if temp < 18 energy usage is low", function(){
     thermostat.down(3);
-    expect(thermostat.usage).toEqual("green")
+    expect(thermostat.energyUsage()).toEqual("green");
   });
   it("if temp <= 25 energy usage is medium", function () {
     thermostat.up(3);
-    expect(thermostat.usage).toEqual("black");
+    expect(thermostat.energyUsage()).toEqual("black");
   });
   it("if temp > 25 energy usage is high", function () {
     thermostat.switchOff();
     thermostat.up(10);
-    expect(thermostat.usage).toEqual("red");
+    expect(thermostat.energyUsage()).toEqual("red");
   });
 });
