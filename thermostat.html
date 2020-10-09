@@ -4,34 +4,43 @@
     <script src='./src/thermostat.js'></script>
     <script src='./jquery-3.5.1.min.js'></script>
     <script src='./interface.js'></script>
+    <link rel='stylesheet' href='style.css' type='text/css'>
     <title>Thermostat</title>
   </head>
   <body>
-    <h1>Thermostat</h1>
-    <h2 id='temperature'></h2>
-    <h3 id='powersave'></h3>
-    <h4 id='usage'></h4>
-    <br>
-    <button id='eusage'> show energy usage </button>
-    <br>
-    <br>
-    <button id='up'>up</button>
-    <button id='down'>down</button>
-    <br>
-    <br>
-    <button id='reset'>reset</button>
-    <br>
-    <br>
-    <button id='pson'>powersave on</button>
-    <button id='psoff'>powersave off</button>
-    <br>
-    <br>
-    <section>
-      <h1>Current temperature: <span id="current-temperature">20</span></h1>
-      <form id="select-city">
-        <input id="current-city" type="text" placeholder="Enter a city"></input>
-        <input type="submit"></input>
-      </form>
-    </section>
+    <div class='app'>
+      <div class='box'>
+        <section class='thermostat'>
+            <h1>Thermostat</h1>
+            <h2 id='temperature'></h2>
+            <h3 id='powersave'></h3>
+            <h4 id='usage'></h4>
+            <br>
+            <button id='eusage'> show energy usage </button>
+            <br>
+            <br>
+            <button id='up'>up</button>
+            <button id='down'>down</button>
+            <br>
+            <br>
+            <button id='reset'>reset</button>
+            <br>
+            <br>
+            <button id='pson'>powersave on</button>
+            <button id='psoff'>powersave off</button>
+            <br>
+            <br>
+          </section>
+      </div>
+      <div class='box'>
+        <section class='weather'>
+          <h1>Current temperature: <span id="current-temperature">20</span></h1>
+          <form id="select-city">
+            <input id="current-city" type="text" placeholder="Enter a city"></input>
+            <input type="submit"></input>
+          </form>
+        </section>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,0 +1,26 @@
+/* * {
+  background-color: aqua;
+}
+
+.app {
+  border: red;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  border: black;
+  border-style: dotted;
+  padding: 10px;
+ margin: 10px;
+}
+
+.thermostat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */

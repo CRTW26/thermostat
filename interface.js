@@ -1,6 +1,13 @@
-$(document).ready(function(){
-  var thermostat = new Thermostat();
-  $('#temperature').text(thermostat.temp);
+$(function(){
+  
+  let temperature;
+  
+  var thermostat = new Thermostat;
+  
+  thermostat.getTemp(setTemp);
+  // getTemp()
+  // setTemp(temperature);
+  //$("#temperature").text(thermostat.getTemp()); 
   $('#powersave').text(thermostat.powerSave);
   $('#usage').text(thermostat.usage);
   
@@ -36,25 +43,35 @@ $(document).ready(function(){
   $('#eusage').on('click', function(){
     $('#usage').text(thermostat.energyUsage());
   });
+  
+  $("#select-city").submit(function (event) {
+    event.preventDefault();
+    var city = $("#current-city").val();
+    displayWeather(city);
+  });
+  
+  function displayWeather(city) {
+    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city;
+    var token = "&appid=79734182354473bd1378b3db74651f2d";
+    var units = "&units=metric";
+    $.get(url + token + units, function (data) {
+      $("#current-temperature").text(data.main.temp);
+    });
+  };
+
+  function setTemp(temp) {
+    $('#temperature').text(temp)
+  };
+  // function getTemp(){
+  //   var url = "http://localhost:9292/temp";
+  //   $.get(url, function(data) {
+  //   temperature = data.temp
+  //   console.log(data.temp)
+  //   });
+  // };
+
+  // function setTemp(temp) {
+  //   $('#temperature').text(thermostat.updateTemperature(temp))
+  // }
 
 });
-
-// $.get('http://api.openweathermap.org/data/2.5/weather?q=london&appid=90c00a335031eec9c510112b569dfd57&units=metric', function(data){
-//   $('#current-temperature').text(data.main.temp);
-// })
-
-// $('#current-city').change(function() {
-//   var city = $('#current-city').val();
-//   $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=90c00a335031eec9c510112b569dfd57&units=metric', function(data) {
-//     $('#current-temperature').text(data.main.temp)
-//   })
-// })
-
-$('#select-city').submit(function(event) {
-  event.preventDefault();
-  var city = $('#current-city').val();
-  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=90c00a335031eec9c510112b569dfd57&units=metric', function(data) {
-    $('#current-temperature').text(data.main.temp);
-  })
-})
-

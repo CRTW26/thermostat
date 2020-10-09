@@ -65,5 +65,22 @@ class Thermostat {
     }
   }
 
+  updateTemperature(temp) {
+    console.log(this)
+    this.temp = temp
+  }
+ 
+  getTemp(inputFunction) {
+    var url = "http://localhost:9292/temp";
+    $.get(url, function(data) {
+      //use the response to set the interface 
+     console.log(inputFunction);
+      inputFunction(data.temp);
+    
+    });
+   
+  };
+
+ 
 }
 
