@@ -52,7 +52,7 @@ $(function(){
   
   function displayWeather(city) {
     var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city;
-    var token = "&appid=79734182354473bd1378b3db74651f2d";
+    var token = "&";
     var units = "&units=metric";
     $.get(url + token + units, function (data) {
       $("#current-temperature").text(data.main.temp);
